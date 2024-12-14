@@ -1,5 +1,5 @@
 # teslaDotcom90
-# Tesla Hand Gesture Mouse Control
+# Tesla Hand Gesture Mouse Control Instructions
 
 This project demonstrates a computer vision-based hand gesture control system that allows users to interact with their computer mouse using hand gestures. The program leverages Mediapipe, OpenCV, and PyAutoGUI to enable gesture-based navigation and mouse control, providing an innovative input method inspired by Tesla's technological ethos.
 
