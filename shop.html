@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesla Shop</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .moving-text {
+            width: 100%;
+            background-color: #ff0000;
+            color: #ffffff;
+            font-size: 16px;
+            padding: 10px;
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+        }
+
+        .moving-text span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: scrollText 15s linear infinite;
+        }
+
+        @keyframes scrollText {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+    </style>
+    <script>
+        let cart = [];
+
+        function addToCart(itemName, itemPrice) {
+            const itemIndex = cart.findIndex(item => item.name === itemName);
+            if (itemIndex !== -1) {
+                cart[itemIndex].quantity++;
+            } else {
+                cart.push({ name: itemName, price: itemPrice, quantity: 1 });
+            }
+            updateCartCount();
+        }
+
+        function removeFromCart(itemName) {
+            const itemIndex = cart.findIndex(item => item.name === itemName);
+            if (itemIndex !== -1) {
+                if (cart[itemIndex].quantity > 1) {
+                    cart[itemIndex].quantity--;
+                } else {
+                    cart.splice(itemIndex, 1);
+                }
+            }
+            updateCartCount();
+        }
+
+        function updateCartCount() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').textContent = totalItems;
+        }
+
+        function showCart() {
+            let cartDetails = cart.map(item => `
+                <div>
+                    <span>${item.name} - $${item.price} x ${item.quantity}</span>
+                    <button onclick=\"addToCart('${item.name}', ${item.price})\">+</button>
+                    <button onclick=\"removeFromCart('${item.name}')\">-</button>
+                </div>`).join('');
+
+            if (cart.length === 0) {
+                cartDetails = '<p>Your cart is empty.</p>';
+            }
+
+            const cartWindow = document.getElementById('cart-window');
+            cartWindow.innerHTML = cartDetails;
+            cartWindow.style.display = 'block';
+        }
+
+        function closeCart() {
+            document.getElementById('cart-window').style.display = 'none';
+        }
+    </script>
+</head>
+<body>
+    <div class="moving-text">
+        <span>🚀 20% off on buying 2 Caps! 🎁 Buy Solar Panels and get a Tesla T-Shirt for FREE! 🏷️</span>
+    </div>
+    <div class="window">
+        <div class="window-header">
+            <span class="window-title">Tesla Shop</span>
+            <div style="float: right; cursor: pointer;" onclick="showCart()">
+                <img src="cart.jpg" alt="Cart" width="30" style="vertical-align: middle;">
+                <span id="cart-count" style="font-weight: bold;">0</span>
+            </div>
+        </div>
+        <div class="window-body">
+            <h1>Shop Tesla Products</h1>
+            <p>Browse our exclusive range of sustainable energy products and stylish apparel.</p>
+
+            <section id="solar-panels">
+                <h2>Solar Panels</h2>
+                <img src="solar.jpg" alt="Solar Panels" width="200">
+                <p>Price: $10,000</p>
+                <button onclick="addToCart('Solar Panels', 10000)">Add to Cart</button>
+            </section>
+
+            <section id="powerwall">
+                <h2>Powerwall</h2>
+                <img src="powerwall.jpg" alt="Powerwall" width="200">
+                <p>Price: $7,500</p>
+                <button onclick="addToCart('Powerwall', 7500)">Add to Cart</button>
+            </section>
+
+            <section id="charging">
+                <h2>Charging Solutions</h2>
+                <img src="charge.jpg" alt="Charging Solutions" width="200">
+                <p>Price: $250</p>
+                <button onclick="addToCart('Charging Solutions', 1000)">Add to Cart</button>
+            </section>
+
+            <section id="apparel">
+                <h2>Apparel</h2>
+                <div>
+                    <h3>Cap</h3>
+                    <img src="cap.jpg" alt="Tesla Cap" width="150">
+                    <p>Price: $25</p>
+                    <button onclick="addToCart('Cap', 25)">Add to Cart</button>
+                </div>
+                <div>
+                    <h3>T-Shirt</h3>
+                    <img src="tshirt.jpg" alt="Tesla T-Shirt" width="150">
+                    <p>Price: $35</p>
+                    <button onclick="addToCart('T-Shirt', 35)">Add to Cart</button>
+                </div>
+            </section>
+
+            <footer>
+                <p>Copyright &copy; 1990 Tesla</p>
+                <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </footer>
+        </div>
+    </div>
+
+    <div id="cart-window" class="window" style="display: none; position: fixed; top: 50px; left: 50%; transform: translateX(-50%); width: 400px; z-index: 1000;">
+        <div class="window-header">
+            <span class="window-title">Your Cart</span>
+            <button onclick="closeCart()" style="float: right; background: none; border: none; font-size: 16px; cursor: pointer;">✖</button>
+        </div>
+        <div class="window-body">
+            <!-- Cart items will be injected here dynamically -->
+        </div>
+    </div>
+</body>
+</html>

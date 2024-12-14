@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesla - Innovating the Future</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Splash Screen Styling */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #cdcaca;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #splash-screen h1 {
+            font-size: 2rem;
+            color: #333;
+        }
+
+        #splash-screen p {
+            margin: 10px 0;
+            color: #666;
+        }
+
+        #splash-screen button,
+        #splash-screen a {
+            background-color: #ff0000;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 10px 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        #splash-screen button:hover,
+        #splash-screen a:hover {
+            background-color: #cc0000;
+        }
+    </style>
+    <script>
+        function continueToWebsite() {
+            document.getElementById('splash-screen').style.display = 'none'; // Hide the splash screen
+            document.querySelector('.window').style.display = 'block'; // Show the main website content
+        }
+    </script>
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <h1>Welcome to Tesla</h1>
+        <p>To view this website go check out the instructions at https://github.com/shonology/teslaDotcom90, please ensure you have downloaded and run the required Python script locally.</p>
+        <p>Click the button below to download the script:</p>
+        <a href="app.py" download>Download Python File</a>
+        <button onclick="continueToWebsite()">Continue to Website</button>
+    </div>
+
+    <!-- Main Website Content -->
+    <div class="window" style="display: none;">
+        <div class="window-header">
+            <span class="window-title">Tesla - Innovating the Future</span>
+        </div>
+        <div class="window-body">
+            <h1>Welcome to Tesla</h1>
+            <img src="logo.jpeg" alt="Tesla Logo" width="200">
+            <p>Tesla is dedicated to accelerating the world’s transition to sustainable energy through innovative electric vehicles, solar energy, and energy storage solutions.</p>
+
+            <h2>Our Offerings:</h2>
+
+            <section id="cars">
+                <h3>Electric Vehicles</h3>
+                <p>Discover our cutting-edge electric vehicles that redefine performance and sustainability:</p>
+                <ul>
+                    <li><strong>Model S:</strong> High-performance sedan with incredible range.</li>
+                    <img src="models.jpg" alt="Tesla Cars" width="300">
+                    <li><strong>Model 3:</strong> Affordable luxury with advanced technology.</li>
+                    <img src="model3.jpg" alt="Tesla Cars" width="300">
+                    <li><strong>Model X:</strong> Versatile SUV with exceptional safety and features.</li>
+                    <img src="modelx.jpg" alt="Tesla Cars" width="300">
+                    <li><strong>Model Y:</strong> Compact SUV with spacious interior.</li>
+                    <img src="modely.jpg" alt="Tesla Cars" width="300">
+                </ul>
+            </section>
+
+            <section id="solar">
+                <h3>Solar Panels</h3>
+                <p>Power your home with clean and renewable solar energy:</p>
+                <ul>
+                    <li>Durable and efficient solar panels.</li>
+                    <li>Seamlessly integrated with Tesla Powerwall for energy storage.</li>
+                </ul>
+                <img src="solar.jpg" alt="Solar Panels" width="300">
+            </section>
+
+            <section id="charging">
+                <h3>Electric Charging</h3>
+                <p>Access the Tesla Supercharger network, the fastest and most convenient way to charge your Tesla on the go:</p>
+                <ul>
+                    <li>Thousands of stations worldwide.</li>
+                    <li>Charge up to 200 miles in 15 minutes.</li>
+                </ul>
+                <img src="charge.jpg" alt="Tesla Supercharger" width="300">
+            </section>
+
+            <section id="shop">
+                <h3>Explore</h3>
+                <p>Revisit Our Products:</p>
+                <ul>
+                    <li><a href="#">Solar Panels</a></li>
+                    <li><a href="#">Cars</a></li>
+                    <li><a href="#">Charging</a></li>
+                </ul>
+                <button class="button" onclick="location.href='shop.html'">Shop Now</button>
+            </section>
+
+            <h2>Contact Us:</h2>
+            <p>Email: <a href="mailto:info@tesla.com">info@tesla.com</a></p>
+            <p>Twitter: <a href="https://twitter.com/tesla">@Tesla</a></p>
+
+            <footer>
+                <p>Copyright &copy; 1990 Tesla</p>
+                <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
