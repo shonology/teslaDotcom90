@@ -58,7 +58,7 @@ $ pip install opencv-python mediapipe pyautogui
 ### 1. Run the Program
 Execute the Python script to start the gesture control system:
 ```bash
-$ python hand_gesture_mouse_control.py
+$ python app.py
 ```
 
 ### 2. Control Your Mouse Using Gestures
@@ -79,18 +79,15 @@ Press the `q` key to terminate the program.
 
 ---
 
-## Contributing
-Feel free to fork the repository and contribute by submitting pull requests. We welcome bug fixes, feature enhancements, and optimizations.
 
 ---
 
-## License
-This project is licensed under the MIT License. See the LICENSE file for details.
+
 
 ---
 
 ## Contact
 For queries or feedback, please contact:
-- **GitHub**: [Your GitHub Profile](https://github.com/shonology)
+- **GitHub**: [GitHub Profile](https://github.com/shonology)
 
 
