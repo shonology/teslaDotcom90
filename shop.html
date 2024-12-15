@@ -4,8 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tesla Shop</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
     <style>
+        /* Windows 98 Aesthetic */
+        body {
+            font-family: "MS Sans Serif", Arial, sans-serif;
+            background-color: #c3c3c3;
+            color: #000;
+        }
+
+        .window {
+            width: 80%;
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        .window-header {
+            background-color: #000080;
+            color: #fff;
+            padding: 5px;
+        }
+
+        .window-body {
+            padding: 10px;
+            background: #fff;
+            border: 2px solid #000;
+        }
+
         .moving-text {
             width: 100%;
             background-color: #ff0000;
@@ -26,6 +51,61 @@
         @keyframes scrollText {
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
+        }
+
+        h1, h2, h3 {
+            margin: 10px 0;
+        }
+
+        a {
+            color: #0000ff;
+            text-decoration: underline;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        button {
+            font-size: 14px;
+            padding: 5px 10px;
+            border: 2px solid #000;
+            background: #c3c3c3;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #e0e0e0;
+        }
+
+        /* Grid Layout for Shop Items */
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .shop-item {
+            background: #e6e6e6;
+            border: 1px solid #000;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .shop-item img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        #cart-window {
+            position: fixed;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            z-index: 1000;
         }
     </style>
     <script>
@@ -62,8 +142,8 @@
             let cartDetails = cart.map(item => `
                 <div>
                     <span>${item.name} - $${item.price} x ${item.quantity}</span>
-                    <button onclick=\"addToCart('${item.name}', ${item.price})\">+</button>
-                    <button onclick=\"removeFromCart('${item.name}')\">-</button>
+                    <button onclick="addToCart('${item.name}', ${item.price})">+</button>
+                    <button onclick="removeFromCart('${item.name}')">-</button>
                 </div>`).join('');
 
             if (cart.length === 0) {
@@ -84,6 +164,7 @@
     <div class="moving-text">
         <span>🚀 20% off on buying 2 Caps! 🎁 Buy Solar Panels and get a Tesla T-Shirt for FREE! 🏷️</span>
     </div>
+
     <div class="window">
         <div class="window-header">
             <span class="window-title">Tesla Shop</span>
@@ -96,42 +177,38 @@
             <h1>Shop Tesla Products</h1>
             <p>Browse our exclusive range of sustainable energy products and stylish apparel.</p>
 
-            <section id="solar-panels">
-                <h2>Solar Panels</h2>
-                <img src="solar.jpg" alt="Solar Panels" width="200">
-                <p>Price: $10,000</p>
-                <button onclick="addToCart('Solar Panels', 10000)">Add to Cart</button>
-            </section>
-
-            <section id="powerwall">
-                <h2>Powerwall</h2>
-                <img src="powerwall.jpg" alt="Powerwall" width="200">
-                <p>Price: $7,500</p>
-                <button onclick="addToCart('Powerwall', 7500)">Add to Cart</button>
-            </section>
-
-            <section id="charging">
-                <h2>Charging Solutions</h2>
-                <img src="charge.jpg" alt="Charging Solutions" width="200">
-                <p>Price: $250</p>
-                <button onclick="addToCart('Charging Solutions', 1000)">Add to Cart</button>
-            </section>
-
-            <section id="apparel">
-                <h2>Apparel</h2>
-                <div>
+            <div class="shop-grid">
+                <div class="shop-item">
+                    <h3>Solar Panels</h3>
+                    <img src="solar.jpg" alt="Solar Panels">
+                    <p>Price: $10,000</p>
+                    <button onclick="addToCart('Solar Panels', 10000)">Add to Cart</button>
+                </div>
+                <div class="shop-item">
+                    <h3>Powerwall</h3>
+                    <img src="powerwall.jpg" alt="Powerwall">
+                    <p>Price: $7,500</p>
+                    <button onclick="addToCart('Powerwall', 7500)">Add to Cart</button>
+                </div>
+                <div class="shop-item">
+                    <h3>Charging Solutions</h3>
+                    <img src="charge.jpg" alt="Charging Solutions">
+                    <p>Price: $250</p>
+                    <button onclick="addToCart('Charging Solutions', 250)">Add to Cart</button>
+                </div>
+                <div class="shop-item">
                     <h3>Cap</h3>
-                    <img src="cap.jpg" alt="Tesla Cap" width="150">
+                    <img src="cap.jpg" alt="Tesla Cap">
                     <p>Price: $25</p>
                     <button onclick="addToCart('Cap', 25)">Add to Cart</button>
                 </div>
-                <div>
+                <div class="shop-item">
                     <h3>T-Shirt</h3>
-                    <img src="tshirt.jpg" alt="Tesla T-Shirt" width="150">
+                    <img src="tshirt.jpg" alt="Tesla T-Shirt">
                     <p>Price: $35</p>
                     <button onclick="addToCart('T-Shirt', 35)">Add to Cart</button>
                 </div>
-            </section>
+            </div>
 
             <footer>
                 <p>Copyright &copy; 1990 Tesla</p>
@@ -140,7 +217,7 @@
         </div>
     </div>
 
-    <div id="cart-window" class="window" style="display: none; position: fixed; top: 50px; left: 50%; transform: translateX(-50%); width: 400px; z-index: 1000;">
+    <div id="cart-window" class="window" style="display: none;">
         <div class="window-header">
             <span class="window-title">Your Cart</span>
             <button onclick="closeCart()" style="float: right; background: none; border: none; font-size: 16px; cursor: pointer;">✖</button>
