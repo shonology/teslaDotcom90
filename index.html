@@ -4,9 +4,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tesla - Innovating the Future</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
     <style>
-        /* Splash Screen Styling */
+        /* Windows 98 Aesthetic */
+        body {
+            font-family: "MS Sans Serif", Arial, sans-serif;
+            background-color: #c3c3c3;
+            color: #000;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .window {
+            width: 80%;
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        .window-header {
+            background-color: #000080;
+            color: #fff;
+            padding: 5px;
+        }
+
+        .window-body {
+            padding: 10px;
+            background: #fff;
+            border: 2px solid #000;
+        }
+
+        h1, h2, h3 {
+            margin: 10px 0;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        h1 {
+            animation-delay: 0.5s;
+        }
+
+        h2 {
+            animation-delay: 1s;
+        }
+
+        h3 {
+            animation-delay: 1.5s;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        a {
+            color: #0000ff;
+            text-decoration: underline;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        /* Grid Layout for Photos */
+        #cars img,
+        #solar img,
+        #charging img {
+            width: 100%;
+            height: auto;
+        }
+
+        #cars ul,
+        #solar ul,
+        #charging ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        /* Retro Buttons */
+        button {
+            font-size: 14px;
+            padding: 5px 10px;
+            border: 2px solid #000;
+            background: #c3c3c3;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        button:hover {
+            background: #e0e0e0;
+            transform: scale(1.1);
+        }
+
+        /* Scrollbar Styling */
+        body::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-color: #808080;
+            border: 2px solid #c3c3c3;
+        }
+
+        body::-webkit-scrollbar-track {
+            background-color: #c3c3c3;
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* Splash Screen */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -14,58 +123,108 @@
             width: 100%;
             height: 100%;
             background-color: #cdcaca;
-            z-index: 1000;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 20px;
-        }
-
-        #splash-screen h1 {
-            font-size: 2rem;
-            color: #333;
-        }
-
-        #splash-screen p {
-            margin: 10px 0;
-            color: #666;
+            z-index: 1000;
+            opacity: 0;
+            animation: fadeInSplash 2s forwards;
         }
 
         #splash-screen button,
         #splash-screen a {
-            background-color: #ff0000;
-            color: #fff;
+            background-color: #c3c3c3;
+            border: 2px solid #000;
+            color: #000;
             text-decoration: none;
             padding: 10px 20px;
             margin: 10px 5px;
-            border: none;
-            border-radius: 5px;
             cursor: pointer;
-            font-size: 1rem;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
         }
 
         #splash-screen button:hover,
         #splash-screen a:hover {
-            background-color: #cc0000;
+            background-color: #e0e0e0;
         }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInSplash {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Contact Us Section Styling */
+#contact-us {
+    margin-top: 20px;
+}
+
+#contact-us label {
+    font-size: 14px;
+    display: block;
+    margin: 5px 0;
+}
+
+#contact-us input,
+#contact-us textarea {
+    font-size: 14px;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #000;
+    margin-bottom: 10px;
+}
+
+#contact-us button {
+    font-size: 14px;
+    padding: 5px 10px;
+    border: 2px solid #000;
+    background: #c3c3c3;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#contact-us button:hover {
+    background: #e0e0e0;
+    transform: scale(1.1);
+}
+
     </style>
     <script>
-        function continueToWebsite() {
+        // Function to hide the splash screen after 5 seconds
+        function hideSplashScreen() {
             document.getElementById('splash-screen').style.display = 'none'; // Hide the splash screen
             document.querySelector('.window').style.display = 'block'; // Show the main website content
+            document.body.style.overflow = 'auto'; // Allow scrolling
         }
+
+        // Automatically hide splash screen after 5 seconds
+        
+
+        // Hide splash screen when user scrolls
+        window.onscroll = function () {
+            hideSplashScreen();
+        };
     </script>
 </head>
 <body>
     <!-- Splash Screen -->
     <div id="splash-screen">
         <h1>Welcome to Tesla</h1>
-        <p>To view this website go check out the instructions at https://github.com/shonology/teslaDotcom90, please ensure you have downloaded and run the required Python script locally.</p>
+        <p>To view this website go check out the instructions</p>
+        <a href="https://github.com/shonology/teslaDotcom90">Instructions</a>
+        <p>Please ensure you have downloaded and run the required Python script locally.</p>
         <p>Click the button below to download the script:</p>
         <a href="app.py" download>Download Python File</a>
-        <button onclick="continueToWebsite()">Continue to Website</button>
+        <button onclick="hideSplashScreen()">Continue to Website</button>
     </div>
 
     <!-- Main Website Content -->
@@ -79,60 +238,72 @@
             <p>Tesla is dedicated to accelerating the world’s transition to sustainable energy through innovative electric vehicles, solar energy, and energy storage solutions.</p>
 
             <h2>Our Offerings:</h2>
-
             <section id="cars">
                 <h3>Electric Vehicles</h3>
-                <p>Discover our cutting-edge electric vehicles that redefine performance and sustainability:</p>
                 <ul>
-                    <li><strong>Model S:</strong> High-performance sedan with incredible range.</li>
-                    <img src="models.jpg" alt="Tesla Cars" width="300">
-                    <li><strong>Model 3:</strong> Affordable luxury with advanced technology.</li>
-                    <img src="model3.jpg" alt="Tesla Cars" width="300">
-                    <li><strong>Model X:</strong> Versatile SUV with exceptional safety and features.</li>
-                    <img src="modelx.jpg" alt="Tesla Cars" width="300">
-                    <li><strong>Model Y:</strong> Compact SUV with spacious interior.</li>
-                    <img src="modely.jpg" alt="Tesla Cars" width="300">
+                    <li><strong>Model S:</strong> High-performance sedan with incredible range.
+                        <img src="models.jpg" alt="Model S">
+                    </li>
+                    <li><strong>Model 3:</strong> Affordable luxury with advanced technology.
+                        <img src="model3.jpg" alt="Model 3">
+                    </li>
+                    <li><strong>Model X:</strong> Versatile SUV with exceptional safety and features.
+                        <img src="modelx.jpg" alt="Model X">
+                    </li>
+                    <li><strong>Model Y:</strong> Compact SUV with spacious interior.
+                        <img src="modely.jpg" alt="Model Y">
+                    </li>
                 </ul>
             </section>
 
             <section id="solar">
                 <h3>Solar Panels</h3>
-                <p>Power your home with clean and renewable solar energy:</p>
                 <ul>
-                    <li>Durable and efficient solar panels.</li>
-                    <li>Seamlessly integrated with Tesla Powerwall for energy storage.</li>
+                    <li>Durable and efficient solar panels.
+                        <img src="solar.jpg" alt="Solar Panels">
+                    </li>
                 </ul>
-                <img src="solar.jpg" alt="Solar Panels" width="300">
             </section>
 
             <section id="charging">
                 <h3>Electric Charging</h3>
-                <p>Access the Tesla Supercharger network, the fastest and most convenient way to charge your Tesla on the go:</p>
                 <ul>
-                    <li>Thousands of stations worldwide.</li>
-                    <li>Charge up to 200 miles in 15 minutes.</li>
+                    <li>Access the Tesla Supercharger network.
+                        <img src="charge.jpg" alt="Tesla Supercharger">
+                    </li>
                 </ul>
-                <img src="charge.jpg" alt="Tesla Supercharger" width="300">
             </section>
 
             <section id="shop">
                 <h3>Explore</h3>
                 <p>Revisit Our Products:</p>
                 <ul>
-                    <li><a href="#">Solar Panels</a></li>
-                    <li><a href="#">Cars</a></li>
-                    <li><a href="#">Charging</a></li>
+                    <li><a href="#solar">Solar Panels</a></li>
+                    <li><a href="#cars">Cars</a></li>
+                    <li><a href="#charging">Charging</a></li>
                 </ul>
                 <button class="button" onclick="location.href='shop.html'">Shop Now</button>
             </section>
 
-            <h2>Contact Us:</h2>
-            <p>Email: <a href="mailto:info@tesla.com">info@tesla.com</a></p>
-            <p>Twitter: <a href="https://twitter.com/tesla">@Tesla</a></p>
+            <section id="contact-us">
+                <h2>Contact Us</h2>
+                <form action="submit_form.php" method="post">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required><br><br>
+            
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required><br><br>
+            
+                    <label for="message">Message:</label><br>
+                    <textarea id="message" name="message" rows="4" required></textarea><br><br>
+            
+                    <button type="submit">Submit</button>
+                </form>
+            </section>
+            
 
             <footer>
-                <p>Copyright &copy; 1990 Tesla</p>
-                <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                <p>&copy; 1990 Tesla | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
             </footer>
         </div>
     </div>
