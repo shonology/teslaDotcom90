@@ -199,6 +199,12 @@
 
     </style>
     <script>
+        // Function to play sound on button click
+        function playClickSound() {
+            var audio = new Audio('click.mp3'); // Sound file path
+            audio.play();
+        }
+
         // Function to hide the splash screen after 5 seconds
         function hideSplashScreen() {
             document.getElementById('splash-screen').style.display = 'none'; // Hide the splash screen
@@ -207,7 +213,7 @@
         }
 
         // Automatically hide splash screen after 5 seconds
-        
+        setTimeout(hideSplashScreen, 5000);
 
         // Hide splash screen when user scrolls
         window.onscroll = function () {
@@ -224,7 +230,7 @@
         <p>Please ensure you have downloaded and run the required Python script locally.</p>
         <p>Click the button below to download the script:</p>
         <a href="app.py" download>Download Python File</a>
-        <button onclick="hideSplashScreen()">Continue to Website</button>
+        <button onclick="playClickSound(); hideSplashScreen()">Continue to Website</button>
     </div>
 
     <!-- Main Website Content -->
@@ -282,7 +288,7 @@
                     <li><a href="#cars">Cars</a></li>
                     <li><a href="#charging">Charging</a></li>
                 </ul>
-                <button class="button" onclick="location.href='shop.html'">Shop Now</button>
+                <button class="button" onclick="playClickSound(); location.href='shop.html'">Shop Now</button>
             </section>
 
             <section id="contact-us">
@@ -297,7 +303,7 @@
                     <label for="message">Message:</label><br>
                     <textarea id="message" name="message" rows="4" required></textarea><br><br>
             
-                    <button type="submit">Submit</button>
+                    <button type="submit" onclick="playClickSound()">Submit</button>
                 </form>
             </section>
             
