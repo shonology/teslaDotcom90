@@ -110,6 +110,7 @@
     </style>
     <script>
         let cart = [];
+        const clickSound = new Audio('click.mp3'); // Add your sound file path here
 
         function addToCart(itemName, itemPrice) {
             const itemIndex = cart.findIndex(item => item.name === itemName);
@@ -119,6 +120,7 @@
                 cart.push({ name: itemName, price: itemPrice, quantity: 1 });
             }
             updateCartCount();
+            clickSound.play();  // Play sound on add to cart
         }
 
         function removeFromCart(itemName) {
@@ -131,6 +133,7 @@
                 }
             }
             updateCartCount();
+            clickSound.play();  // Play sound on remove from cart
         }
 
         function updateCartCount() {
